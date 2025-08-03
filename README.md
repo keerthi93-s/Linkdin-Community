@@ -112,13 +112,39 @@ cd client && npm install
 
 ## 🚀 Deployment
 
-### Frontend (Vercel/Netlify)
+### Vercel Deployment (Recommended)
+
+1. **Connect your GitHub repository to Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Import your GitHub repository
+   - Vercel will automatically detect the configuration
+
+2. **Set up Environment Variables in Vercel**
+   - Go to your project settings in Vercel
+   - Add the following environment variables:
+   ```
+   MONGODB_URI=your-mongodb-connection-string
+   JWT_SECRET=your-super-secret-jwt-key
+   NODE_ENV=production
+   ```
+
+3. **Update API URL**
+   - After deployment, update the API URL in `client/src/config/api.js`
+   - Replace `your-vercel-app-name.vercel.app` with your actual Vercel domain
+
+4. **Deploy**
+   - Vercel will automatically build and deploy your application
+   - The `vercel.json` file handles the routing configuration
+
+### Manual Deployment
+
+**Frontend (Vercel/Netlify)**
 ```bash
 npm run build
 ```
 Upload `client/build` folder
 
-### Backend (Render/Railway)
+**Backend (Render/Railway)**
 - Set environment variables
 - Use `npm start` as start command
 
