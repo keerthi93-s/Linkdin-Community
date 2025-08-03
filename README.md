@@ -122,6 +122,20 @@ Upload `client/build` folder
 - Set environment variables
 - Use `npm start` as start command
 
+
+## Screen shots of the project 
+<img width="1920" height="1080" alt="Screenshot 2025-08-03 210648" src="https://github.com/user-attachments/assets/a8e3e611-13b5-4e28-8e63-3528a2eed047" />
+<img width="1919" height="825" alt="Screenshot 2025-08-03 210746" src="https://github.com/user-attachments/assets/3953541a-8974-4cb7-9ab5-fab4b5a1b3dd" />
+<img width="1919" height="827" alt="Screenshot 2025-08-03 210803" src="https://github.com/user-attachments/assets/349c686a-1ea8-43d2-b737-deab1112f1f7" />
+<img width="1919" height="833" alt="Screenshot 2025-08-03 210820" src="https://github.com/user-attachments/assets/4d22b3c0-7a4e-4ffd-9475-b60bbba7b411" />
+
+
+  ## Vedio Demo
+
+
+https://github.com/user-attachments/assets/32a8090a-da38-4f15-b23c-69ede7d61c21
+
+
 ## 📝 License
 
 MIT License 
