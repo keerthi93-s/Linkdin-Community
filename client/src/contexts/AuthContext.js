@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import API_BASE_URL from '../config/api';
 
 const AuthContext = createContext();
 
@@ -20,9 +19,6 @@ export const AuthProvider = ({ children }) => {
 
   // Set up axios defaults
   useEffect(() => {
-    // Set base URL for axios
-    axios.defaults.baseURL = API_BASE_URL;
-    
     if (token) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     } else {
@@ -35,7 +31,7 @@ export const AuthProvider = ({ children }) => {
     const checkAuth = async () => {
       if (token) {
         try {
-          const response = await axios.get('/auth/me');
+          const response = await axios.get('/api/auth/me');
           setUser(response.data);
         } catch (error) {
           console.error('Auth check failed:', error);
@@ -51,7 +47,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('/auth/login', { email, password });
+      const response = await axios.post('/api/auth/login', { email, password });
       const { token: newToken, user: userData } = response.data;
       
       localStorage.setItem('token', newToken);
@@ -69,7 +65,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password, bio = '') => {
     try {
-      const response = await axios.post('/auth/register', {
+      const response = await axios.post('/api/auth/register', {
         name,
         email,
         password,
@@ -99,7 +95,7 @@ export const AuthProvider = ({ children }) => {
 
   const updateProfile = async (profileData) => {
     try {
-      const response = await axios.put('/users/profile', profileData);
+      const response = await axios.put('/api/users/profile', profileData);
       setUser(response.data);
       toast.success('Profile updated successfully!');
       return { success: true };

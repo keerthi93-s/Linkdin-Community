@@ -5,7 +5,6 @@ import PostCard from '../components/PostCard';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { formatDistanceToNow } from 'date-fns';
-import API_BASE_URL from '../config/api';
 
 const Home = () => {
   const { user, isAuthenticated } = useAuth();
@@ -21,7 +20,7 @@ const Home = () => {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${API_BASE_URL}/posts?page=${page}&limit=10`);
+      const response = await axios.get(`/api/posts?page=${page}&limit=10`);
       const { posts: newPosts, totalPages } = response.data;
       
       if (page === 1) {
@@ -41,7 +40,7 @@ const Home = () => {
 
   const handleCreatePost = async (content) => {
     try {
-      const response = await axios.post(`${API_BASE_URL}/posts`, { content });
+      const response = await axios.post('/api/posts', { content });
       setPosts(prev => [response.data, ...prev]);
       toast.success('Post created successfully!');
     } catch (error) {
@@ -52,7 +51,7 @@ const Home = () => {
 
   const handleLikePost = async (postId) => {
     try {
-      const response = await axios.put(`${API_BASE_URL}/posts/${postId}/like`);
+      const response = await axios.put(`/api/posts/${postId}/like`);
       setPosts(prev => 
         prev.map(post => 
           post._id === postId ? response.data : post
@@ -66,7 +65,7 @@ const Home = () => {
 
   const handleCommentPost = async (postId, content) => {
     try {
-      const response = await axios.post(`${API_BASE_URL}/posts/${postId}/comment`, { content });
+      const response = await axios.post(`/api/posts/${postId}/comment`, { content });
       setPosts(prev => 
         prev.map(post => 
           post._id === postId ? response.data : post
@@ -81,7 +80,7 @@ const Home = () => {
 
   const handleDeletePost = async (postId) => {
     try {
-      await axios.delete(`${API_BASE_URL}/posts/${postId}`);
+      await axios.delete(`/api/posts/${postId}`);
       setPosts(prev => prev.filter(post => post._id !== postId));
       toast.success('Post deleted successfully!');
     } catch (error) {

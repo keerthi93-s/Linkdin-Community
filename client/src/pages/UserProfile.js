@@ -5,7 +5,6 @@ import PostCard from '../components/PostCard';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { FaUserPlus, FaUserCheck } from 'react-icons/fa';
-import API_BASE_URL from '../config/api';
 
 const UserProfile = () => {
   const { id } = useParams();
@@ -24,8 +23,8 @@ const UserProfile = () => {
     try {
       setLoading(true);
       const [userResponse, postsResponse] = await Promise.all([
-        axios.get(`${API_BASE_URL}/users/${id}`),
-        axios.get(`${API_BASE_URL}/users/${id}/posts`)
+        axios.get(`/api/users/${id}`),
+        axios.get(`/api/users/${id}/posts`)
       ]);
       
       setUser(userResponse.data);
@@ -51,12 +50,12 @@ const UserProfile = () => {
 
     setIsSubmitting(true);
     try {
-      const response = await axios.put(`${API_BASE_URL}/users/${id}/follow`);
+      const response = await axios.put(`/api/users/${id}/follow`);
       setIsFollowing(response.data.following);
       toast.success(response.data.message);
       
       // Update user data to reflect new follower count
-      const userResponse = await axios.get(`${API_BASE_URL}/users/${id}`);
+      const userResponse = await axios.get(`/api/users/${id}`);
       setUser(userResponse.data);
     } catch (error) {
       console.error('Error following user:', error);
