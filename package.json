@@ -4,10 +4,6 @@
   "description": "A mini LinkedIn-like community platform",
   "main": "server/index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server/index.js",
     "client": "cd client && npm start",
@@ -33,4 +29,4 @@
     "nodemon": "^3.0.1",
     "concurrently": "^8.2.0"
   }
-} 
+}
